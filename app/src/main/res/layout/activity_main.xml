@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.neusoft.mc2.setting.ui.state.MainActivityViewModel" />
+
+        <variable
+            name="click"
+            type="com.neusoft.mc2.setting.ui.MainActivity.ClickProxy" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/setting_bg"
+        android:orientation="vertical"
+        tools:context=".ui.MainActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="352dp"
+                android:background="@color/transparent"
+                android:onClick="@{()->click.tabConnect()}"
+                android:text="Connect"
+                android:textAllCaps="false"
+                android:textColor="@color/tab_text_default"
+                android:textSize="30sp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="88dp"
+                android:background="@color/transparent"
+                android:onClick="@{()->click.tabAudio()}"
+                android:text="Audio"
+                android:textAllCaps="false"
+                android:textColor="@color/tab_text_default"
+                android:textSize="30sp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="88dp"
+                android:background="@color/transparent"
+                android:onClick="@{()->click.tabDisplay()}"
+                android:text="Display"
+                android:textAllCaps="false"
+                android:textColor="@color/tab_text_default"
+                android:textSize="30sp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="90dp"
+                android:background="@color/transparent"
+                android:onClick="@{()->click.tabSystem()}"
+                android:text="System"
+                android:textAllCaps="false"
+                android:textColor="@color/tab_text_default"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.neusoft.mc2.setting.ui.custom.RecyclerScrollView
+                android:layout_width="520dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:scrollbars="none">
+
+                <FrameLayout
+                    android:id="@+id/rightFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp" />
+            </com.neusoft.mc2.setting.ui.custom.RecyclerScrollView>
+
+            <com.neusoft.mc2.setting.ui.custom.RecyclerScrollView
+                android:layout_width="420dp"
+                android:layout_height="match_parent"
+                android:scrollbars="none">
+
+                <FrameLayout
+                    android:id="@+id/leftFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp" />
+            </com.neusoft.mc2.setting.ui.custom.RecyclerScrollView>
+
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

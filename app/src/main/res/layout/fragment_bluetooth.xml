@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical"
+    tools:context=".ui.fragmentConnectView.BluetoothFragment">
+
+    <LinearLayout
+        android:layout_width="420dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/item_pressed_bg"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="270dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="20dp"
+            android:text="Bluetooth Switch"
+            android:textColor="#CCFFFFFF"
+            android:textSize="28sp" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchBtEnable"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="30dp"
+            android:textColor="@color/white"
+            android:textOff="Off"
+            android:textOn="On"
+            android:textSize="15sp"
+            app:showText="true" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="420dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/item_pressed_bg"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="270dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="20dp"
+            android:text="Device Name"
+            android:textColor="#CCFFFFFF"
+            android:textSize="28sp" />
+
+        <TextView
+            android:id="@+id/tvBtName"
+            android:layout_width="151dp"
+            android:layout_height="26dp"
+            android:text="PROTON"
+            android:textColor="#FFFFFFFF"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llBtVisibilityList"
+        android:layout_width="420dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/item_pressed_bg"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="270dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="20dp"
+            android:text="Device Visibility"
+            android:textColor="#CCFFFFFF"
+            android:textSize="28sp" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchVisibility"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="30dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llPairedBtList"
+        android:layout_width="420dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:background="@color/item_pressed_bg"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="270dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="20dp"
+            android:gravity="center_vertical"
+            android:text="Paired  Devices"
+            android:textColor="#CCFFFFFF"
+            android:textSize="28sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewPairedBt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llSearchBtList"
+        android:layout_width="420dp"
+        android:layout_height="wrap_content"
+        android:background="@color/item_pressed_bg"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="270dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="20dp"
+                android:gravity="center_vertical"
+                android:text="Available Devices"
+                android:textColor="#CCFFFFFF"
+                android:textSize="28sp" />
+
+            <com.neusoft.mc2.setting.ui.custom.ProgressLoadingImageView
+                android:id="@+id/ivRefreshBt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="60dp"
+                android:src="@drawable/btn_wifi_refresh" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewSearchBt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>

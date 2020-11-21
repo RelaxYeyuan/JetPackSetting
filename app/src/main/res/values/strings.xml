@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MC2Setting</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="text_wifi_hot_none">OPEN</string>
+    <string name="text_wifi_hot_wpa">WPA PSK</string>
+    <string name="text_wifi_hot_wpa2">WPA2 PSK</string>
+
+</resources>

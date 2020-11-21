@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.neusoft.mc2.setting.ui.state.ConnectViewModel" />
+
+        <variable
+            name="click"
+            type="com.neusoft.mc2.setting.ui.fragment.ConnectFragment.ClickProxy" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.fragment.ConnectFragment">
+
+        <LinearLayout
+            android:layout_width="520dp"
+            android:layout_height="100dp"
+            android:background="@drawable/selector_item_bg"
+            android:gravity="center_vertical"
+            android:onClick="@{()->click.bluetoothClick()}">
+
+            <TextView
+                android:id="@+id/tvBluetooth"
+                android:layout_width="320dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="20dp"
+                android:text="Bluetooth "
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/tvBluetoothStatus"
+                android:layout_width="151dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="9dp"
+                android:gravity="center"
+                android:text="Open"
+                android:textAlignment="center"
+                android:textColor="@color/tab_text_default"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="520dp"
+            android:layout_height="100dp"
+            android:background="@drawable/selector_item_bg"
+            android:gravity="center_vertical"
+            android:onClick="@{()->click.wifiClick()}">
+
+            <TextView
+                android:id="@+id/tvWifi"
+                android:layout_width="320dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="20dp"
+                android:text="WI-FI "
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/tvWifiStatus"
+                android:layout_width="151dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="9dp"
+                android:gravity="center"
+                android:text="Open"
+                android:textAlignment="center"
+                android:textColor="@color/tab_text_default"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="520dp"
+            android:layout_height="100dp"
+            android:background="@drawable/selector_item_bg"
+            android:gravity="center_vertical"
+            android:onClick="@{()->click.hotSpotClick()}">
+
+            <TextView
+                android:id="@+id/tvHotspot"
+                android:layout_width="320dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="20dp"
+                android:text="Personal Hotspot "
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/tvHotspotStatus"
+                android:layout_width="151dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="9dp"
+                android:gravity="center"
+                android:text="Open"
+                android:textAlignment="center"
+                android:textColor="@color/tab_text_default"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="520dp"
+            android:layout_height="100dp"
+            android:background="@drawable/selector_item_bg"
+            android:gravity="center_vertical"
+            android:onClick="@{()->click.mobileClick()}">
+
+            <TextView
+                android:id="@+id/tvMobile"
+                android:layout_width="320dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="20dp"
+                android:text="Mobile Data "
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+            <TextView
+                android:layout_width="151dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="9dp"
+                android:gravity="center"
+                android:text="Open"
+                android:textAlignment="center"
+                android:textColor="@color/tab_text_default"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.fragmentSystemView.RestoreSettingsFragment">
+
+    <LinearLayout
+        android:layout_width="420dp"
+        android:layout_height="214dp"
+        android:background="@color/item_pressed_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="380dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:text="Restore factory settings."
+            android:textColor="#CCFFFFFF"
+            android:textSize="28sp" />
+
+        <TextView
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:text="Reset operation will set all your data, \napps to factory state, and then restart \nautomatically afterwards."
+            android:textColor="#FFFFFFFF"
+            android:textSize="22sp" />
+
+        <ImageView
+            android:id="@+id/ivResetFactory"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="280dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/btn_reset" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="420dp"
+        android:layout_height="186dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/item_pressed_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="380dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:text="Restore default settings"
+            android:textColor="#CCFFFFFF"
+            android:textSize="28sp" />
+
+        <TextView
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:text="Reset operation will restore settings to \ndefault values."
+            android:textColor="#FFFFFFFF"
+            android:textSize="22sp" />
+
+        <ImageView
+            android:id="@+id/ivResetDefault"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="280dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/btn_reset" />
+    </LinearLayout>
+</LinearLayout>

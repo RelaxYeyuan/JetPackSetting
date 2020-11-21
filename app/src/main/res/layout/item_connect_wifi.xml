@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llWifiBg"
+    android:layout_width="420dp"
+    android:layout_height="90dp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="40dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvItemWifiName"
+            android:layout_width="270dp"
+            android:layout_height="32dp"
+            android:text="iPhoneX Pro"
+            android:textColor="#80FFFFFF"
+            android:textSize="28sp" />
+
+        <TextView
+            android:id="@+id/tvItemWifiStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#80FFFFFF"
+            android:textSize="28sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivWifiSignal"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="20dp"
+        android:layout_toEndOf="@+id/ll" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/tab_item_line" />
+</RelativeLayout>

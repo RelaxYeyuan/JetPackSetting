@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.HotspotActivity">
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="30dp">
+
+        <TextView
+            android:layout_width="227dp"
+            android:layout_height="31dp"
+            android:layout_gravity="center_vertical"
+            android:text="Personal Hotspot"
+            android:textColor="#FFFFFFFF"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/btn_back" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/ll"
+        android:background="@color/tab_item_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="420dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp" />
+
+        <LinearLayout
+            android:layout_width="520dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="44dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="Personal Hotspot"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="30sp" />
+
+                <View
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="100dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="SSID"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:layout_width="151dp"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="9dp"
+                    android:text="ProtonWifi_\nXXXXXX"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="Password of wireless \nnetwork"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:layout_width="151dp"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="9dp"
+                    android:gravity="center"
+                    android:text="******"
+                    android:textAlignment="textEnd"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="24sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

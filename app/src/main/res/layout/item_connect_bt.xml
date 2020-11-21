@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llBtBg"
+    android:layout_width="420dp"
+    android:layout_height="90dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tvItemBtName"
+        android:layout_width="230dp"
+        android:layout_height="32dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="40dp"
+        android:text="iPhoneX Pro"
+        android:textColor="#80FFFFFF"
+        android:textSize="28sp" />
+
+    <ImageView
+        android:id="@+id/ivBtOk"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="20dp"
+        android:layout_toEndOf="@+id/tvItemBtName"
+        android:src="@drawable/btn_wifi_ok" />
+
+    <ImageView
+        android:id="@+id/ivBtInformation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="20dp"
+        android:layout_toEndOf="@+id/ivBtOk"
+        android:src="@drawable/btn_message" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/tab_item_line" />
+</RelativeLayout>

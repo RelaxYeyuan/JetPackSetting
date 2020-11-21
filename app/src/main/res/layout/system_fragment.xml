@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.neusoft.mc2.setting.ui.state.SystemViewModel" />
+
+        <variable
+            name="click"
+            type="com.neusoft.mc2.setting.ui.fragment.SystemFragment.ClickProxy" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.fragment.SystemFragment">
+
+        <RelativeLayout
+            android:id="@+id/rlItemTimeMode"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@drawable/selector_item_bg"
+            android:onClick="@{()->click.itemTimeMode()}">
+
+            <TextView
+                android:id="@+id/tvTimeMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Time mode"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/tv12h"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvTimeMode"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="27dp"
+                android:gravity="center"
+                android:text="12h"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tv24h"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvTimeMode"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="27dp"
+                android:layout_toEndOf="@+id/tv12h"
+                android:gravity="center"
+                android:text="24h"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/tab_item_line" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlItemStorage"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/selector_item_bg"
+            android:gravity="center_vertical"
+            android:onClick="@{()->click.itemStorage()}">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Storage"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlItemAbout"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/selector_item_bg"
+            android:gravity="center_vertical"
+            android:onClick="@{()->click.itemAbout()}">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="About"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlItemSoftwareUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/selector_item_bg"
+            android:gravity="center_vertical"
+            android:onClick="@{()->click.itemSoftwareUpdate()}">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Software Update"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlItemRestoreSettings"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/selector_item_bg"
+            android:gravity="center_vertical"
+            android:onClick="@{()->click.itemRestoreSettings()}">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Restore settings"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

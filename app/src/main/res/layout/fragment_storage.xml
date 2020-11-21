@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="420dp"
+    android:layout_height="400dp"
+    tools:context=".ui.fragmentSystemView.StorageFragment">
+
+    <TextView
+        android:id="@+id/tvTotalMemory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:text="240GB available (500GB)"
+        android:textColor="#CCFFFFFF"
+        android:textSize="26sp" />
+
+    <View
+        android:id="@+id/viewMemory"
+        android:layout_width="380dp"
+        android:layout_height="12dp"
+        android:layout_below="@+id/tvTotalMemory"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="11dp"
+        android:background="#0FFFFFFF" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/viewMemory"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="60dp" />
+
+</RelativeLayout>

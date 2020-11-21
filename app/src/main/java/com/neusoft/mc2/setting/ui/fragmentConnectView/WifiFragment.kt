@@ -21,11 +21,9 @@ import com.neusoft.mc2.setting.ui.MainActivity
 import com.neusoft.mc2.setting.ui.custom.FullyLinearLayoutManager
 import com.neusoft.mc2.setting.ui.dialog.EditInputDialogFragment
 import com.neusoft.mc2.setting.utils.Utils
-import com.neusoft.mc2.setting.wifi.BaseWifiManager.WIFI_STATE_CONNECTED
-import com.neusoft.mc2.setting.wifi.BaseWifiManager.WIFI_STATE_CONNECT_FAIL
-import com.neusoft.mc2.setting.wifi.IWifi
-import com.neusoft.mc2.setting.wifi.NewWifiManager
-import com.neusoft.mc2.setting.wifi.State
+import com.neusoft.mc2.setting.wifi.*
+import com.neusoft.mc2.setting.wifi.BaseWifiManager.Companion.WIFI_STATE_CONNECTED
+import com.neusoft.mc2.setting.wifi.BaseWifiManager.Companion.WIFI_STATE_CONNECT_FAIL
 import java.lang.ref.WeakReference
 import java.util.*
 
@@ -34,8 +32,8 @@ private val SEATCH_WIFI = 0x01
 
 class WifiFragment : Fragment() {
 
-    private val pairedList = LinkedList<IWifi>()
-    private val searchList = LinkedList<IWifi>()
+    private val pairedList = LinkedList<Wifi>()
+    private val searchList = LinkedList<Wifi>()
     private val iWifiManager by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
         NewWifiManager.create(requireContext())
     }
@@ -73,7 +71,7 @@ class WifiFragment : Fragment() {
                 pairedList,
                 object :
                     WifiPairedAdapter.WifiPairListener {
-                    override fun onWifiPairClick(wifiEntry: IWifi) {
+                    override fun onWifiPairClick(wifiEntry: Wifi) {
                         val mainActivity = activity as MainActivity
                         mainActivity.showWifiInformation(wifiEntry, iWifiManager)
                     }
@@ -85,7 +83,7 @@ class WifiFragment : Fragment() {
                 searchList,
                 object :
                     WifiSearchAdapter.ItemConnectListener {
-                    override fun onSearchConnectClick(wifi: IWifi) {
+                    override fun onSearchConnectClick(wifi: Wifi) {
                         if (!wifi.isEncrypt) {
                             iWifiManager.connectOpenWifi(wifi)
                         } else {
@@ -104,48 +102,55 @@ class WifiFragment : Fragment() {
 
     private fun initWifiListener() {
         //wifi搜索列表
-        iWifiManager.setOnWifiChangeListener { wifis ->
-            //如果有正在连接，isConnected false
-            //"semisky-5.8G" false 开始连接...
-            //"semisky-2.4G" true 已连接
-            for (wifi in wifis) {
-                if (iWifiManager.isConnecting) {
-                    wifi.isConnected = false
+        iWifiManager.setOnWifiChangeListener(object : BaseWifiManager.OnWifiChangeListener {
+            override fun onWifiChanged(wifis: List<Wifi>) {
+                //如果有正在连接，isConnected false
+                //"semisky-5.8G" false 开始连接...
+                //"semisky-2.4G" true 已连接
+                for (wifi in wifis) {
+                    if (iWifiManager.isConnecting) {
+                        wifi.isConnected = false
+                    }
+                    Log.d(
+                        TAG,
+                        "onWifiChanged:name ${wifi.name} isConnected ${wifi.isConnected} " +
+                                "isSaved ${wifi.isSaved}${wifi.description()}"
+                    )
                 }
-                Log.d(
-                    TAG,
-                    "onWifiChanged:name ${wifi.name()} isConnected ${wifi.isConnected} isSaved ${wifi.isSaved}${wifi.description()}"
-                )
+                iWifiManager.isConnecting = false
+                wifiPairListDataAdapter?.setData(wifis)
+                wifiDataSearchListAdapter?.setData(wifis, wifiManager.configuredNetworks)
             }
-            iWifiManager.isConnecting = false
-
-            wifiPairListDataAdapter?.setData(wifis)
-            wifiDataSearchListAdapter?.setData(wifis, wifiManager.configuredNetworks)
-        }
+        })
         //wifi连接状态
-        iWifiManager.setOnWifiConnectListener { status ->
-            Log.d(TAG, "onConnectChanged: %status")
-            iWifiManager.scanWifi()
-            when (status) {
-                WIFI_STATE_CONNECTED -> {
-                }
-                WIFI_STATE_CONNECT_FAIL -> {
+        iWifiManager.setOnWifiConnectListener(object : BaseWifiManager.OnWifiConnectListener {
+            override fun onConnectChanged(status: Int) {
+                Log.d(TAG, "onConnectChanged: %status")
+                iWifiManager.scanWifi()
+                when (status) {
+                    WIFI_STATE_CONNECTED -> {
+                    }
+                    WIFI_STATE_CONNECT_FAIL -> {
+                    }
                 }
             }
-        }
+        })
         //wifi开关状态
-        iWifiManager.setOnWifiStateChangeListener { state ->
-            Log.d(TAG, "onStateChanged: $state")
-            if (state === State.ENABLED) {
-                switchBtEnable?.isChecked = true
-                llPairedWifiList?.visibility = View.VISIBLE
-                llSearchWifiList?.visibility = View.VISIBLE
-            } else if (state === State.DISABLED) {
-                switchBtEnable?.isChecked = false
-                llPairedWifiList?.visibility = View.GONE
-                llSearchWifiList?.visibility = View.GONE
+        iWifiManager.setOnWifiStateChangeListener(object :
+            BaseWifiManager.OnWifiStateChangeListener {
+            override fun onStateChanged(state: BaseWifiManager.State) {
+                Log.d(TAG, "onStateChanged: $state")
+                if (state === BaseWifiManager.State.ENABLED) {
+                    switchBtEnable?.isChecked = true
+                    llPairedWifiList?.visibility = View.VISIBLE
+                    llSearchWifiList?.visibility = View.VISIBLE
+                } else if (state === BaseWifiManager.State.DISABLED) {
+                    switchBtEnable?.isChecked = false
+                    llPairedWifiList?.visibility = View.GONE
+                    llSearchWifiList?.visibility = View.GONE
+                }
             }
-        }
+        })
 
         switchBtEnable?.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
@@ -158,7 +163,7 @@ class WifiFragment : Fragment() {
         wifiHandler.sendEmptyMessage(SEATCH_WIFI)
     }
 
-    private fun pupPasswordDialog(wifi: IWifi) {
+    private fun pupPasswordDialog(wifi: Wifi) {
         val dialog = EditInputDialogFragment.newInstance("")
         val listener: EditInputDialogFragment.ClickConfirmListener =
             object : EditInputDialogFragment.ClickConfirmListener {
@@ -198,7 +203,7 @@ class WifiFragment : Fragment() {
             when (msg.what) {
                 SEATCH_WIFI -> {
                     if (!wifiFragment?.isHidden!!) {
-                        wifiFragment.iWifiManager?.scanWifi()
+                        wifiFragment.iWifiManager.scanWifi()
                         wifiFragment.wifiHandler.sendEmptyMessageDelayed(SEATCH_WIFI, 2000)
                     }
                 }

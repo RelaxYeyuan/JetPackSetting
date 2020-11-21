@@ -9,19 +9,19 @@ import com.neusoft.mc2.setting.R
 import com.neusoft.mc2.setting.base.BaseRecyclerAdapter
 import com.neusoft.mc2.setting.base.BaseViewHolder
 import com.neusoft.mc2.setting.utils.Utils
-import com.neusoft.mc2.setting.wifi.IWifi
+import com.neusoft.mc2.setting.wifi.Wifi
 import java.util.*
 
 class WifiSearchAdapter(
-    context: Context, id: Int, private val dataList: LinkedList<IWifi>,
+    context: Context, id: Int, private val dataList: LinkedList<Wifi>,
     private val listener: ItemConnectListener
 ) :
-    BaseRecyclerAdapter<IWifi>(context, id, dataList) {
+    BaseRecyclerAdapter<Wifi>(context, id, dataList) {
 
-    private val listTemp = ArrayList<IWifi>()
+    private val listTemp = ArrayList<Wifi>()
 
     fun setData(
-        wifiList: List<IWifi>,
+        wifiList: List<Wifi>,
         configuredNetworks: List<WifiConfiguration>
     ) {
         listTemp.clear()
@@ -29,7 +29,7 @@ class WifiSearchAdapter(
         dataList.addAll(wifiList)
         for (i in wifiList.indices) {
             for (j in configuredNetworks.indices) {
-                if (wifiList[i].SSID().equals(configuredNetworks[j].SSID)) {
+                if (wifiList[i].SSID == configuredNetworks[j].SSID) {
                     listTemp.add(wifiList[i])
                 }
             }
@@ -38,10 +38,10 @@ class WifiSearchAdapter(
         notifyDataSetChanged()
     }
 
-    override fun bindData(holder: BaseViewHolder, data: IWifi, position: Int) {
-        val scanSSID = data.SSID()
-        val capabilities = data.capabilities()
-        val level = WifiManager.calculateSignalLevel(data.level(), 5)
+    override fun bindData(holder: BaseViewHolder, data: Wifi, position: Int) {
+        val scanSSID = data.SSID
+        val capabilities = data.capabilities
+        val level = WifiManager.calculateSignalLevel(data.level, 5)
         holder.setText(R.id.tvItemWifiStatus, data.description())
         holder.setText(R.id.tvItemWifiName, Utils.checkWifiNameQuotes(scanSSID))
 
@@ -66,6 +66,6 @@ class WifiSearchAdapter(
 
     interface ItemConnectListener {
         //当点击了连接
-        fun onSearchConnectClick(wifi: IWifi)
+        fun onSearchConnectClick(wifi: Wifi)
     }
 }

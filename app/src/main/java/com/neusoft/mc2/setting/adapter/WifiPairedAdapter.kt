@@ -7,7 +7,7 @@ import com.neusoft.mc2.setting.R
 import com.neusoft.mc2.setting.base.BaseRecyclerAdapter
 import com.neusoft.mc2.setting.base.BaseViewHolder
 import com.neusoft.mc2.setting.utils.Utils
-import com.neusoft.mc2.setting.wifi.IWifi
+import com.neusoft.mc2.setting.wifi.Wifi
 import java.util.*
 
 private const val TAG = "WifiPairedAdapter"
@@ -15,11 +15,11 @@ private const val TAG = "WifiPairedAdapter"
 class WifiPairedAdapter(
     context: Context,
     id: Int,
-    private val dataList: LinkedList<IWifi>,
+    private val dataList: LinkedList<Wifi>,
     val listener: WifiPairListener
-) : BaseRecyclerAdapter<IWifi>(context, id, dataList) {
+) : BaseRecyclerAdapter<Wifi>(context, id, dataList) {
 
-    fun setData(wifiList: List<IWifi>) {
+    fun setData(wifiList: List<Wifi>) {
         if (wifiList.isNotEmpty()) {
             dataList.clear()
             //筛选出已保存的设备
@@ -29,7 +29,7 @@ class WifiPairedAdapter(
                     wifi.isClickSecond = false
                     dataList.add(wifi)
                     Log.d(
-                        TAG, "setData: ${wifi.SSID()} ${wifi.isConnected}  " +
+                        TAG, "setData: ${wifi.SSID} ${wifi.isConnected}  " +
                                 "${wifi.description()} ${wifi.isConnecting}"
                     )
                 }
@@ -37,7 +37,7 @@ class WifiPairedAdapter(
         }
 //        移动已保存的到首位
         for (i in dataList.indices) {
-            val wifi: IWifi = dataList[i]
+            val wifi: Wifi = dataList[i]
             if (wifi.isConnected) {
                 dataList.removeAt(i)
                 dataList.addFirst(wifi)
@@ -47,8 +47,8 @@ class WifiPairedAdapter(
         notifyDataSetChanged()
     }
 
-    override fun bindData(holder: BaseViewHolder, data: IWifi, position: Int) {
-        holder.setText(R.id.tvItemWifiName, Utils.checkWifiNameQuotes(data.SSID()))
+    override fun bindData(holder: BaseViewHolder, data: Wifi, position: Int) {
+        holder.setText(R.id.tvItemWifiName, Utils.checkWifiNameQuotes(data.SSID))
         holder.setText(R.id.tvItemWifiStatus, data.description())
         if (data.isConnected) {
             holder.setViewVisibility(R.id.ivWifiOk, View.VISIBLE)
@@ -62,6 +62,6 @@ class WifiPairedAdapter(
 
     interface WifiPairListener {
         //当点击了连接
-        fun onWifiPairClick(wifiEntry: IWifi)
+        fun onWifiPairClick(wifiEntry: Wifi)
     }
 }
